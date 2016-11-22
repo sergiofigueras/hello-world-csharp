@@ -1,32 +1,33 @@
-﻿project: TeamCityDemoApp
-  #String project
-  #Set<String> notAllowedLibs # Set that represents the not allowed libs identifiers
-  #Set<String> disabledRules # Set containing 
-  #Set<String> activatedRules # Some rules can be disabled by default, for now only Local Variables Must be Final rule is.
-  #Set<String> rulesAsWarnings # you can configure if a rule is a warning or an error
-  #Set<String> rulesAsErrors  # you can configure if a rule is a warning or an error
-  #List<Map<String, List<String>>> disabledRulesFiltered # rules can be disabled in package, class or method level, ex:
+project: TeamCityDemoApp
+notAllowedLibs:
+  - junit
+disabledRules:
+  - some_ruleid
+activatedRules:
+  - my_non_activated_ruleid
+rulesAsWarnings:
+  - some_ruleid
+rulesAsErrors:
+  - some_ruleid  
+disabledRulesFiltered:
+ - "readability, mutation_testing":
+   - "*"
+ - "magic_strings":
+   - "com.devfactory.utqg.*"
+ - "test_method_name_formation":
+   - "com.devfactory.utqg.testproject.App1Test.*"
+   - "com.devfactory.utqg.testproject.App2Test.*"
 
-  #disabledRulesFiltered:
-  #- "readability, mutation_testing":
-  #  - "*"
-  #- "magic_strings":
-  #  - "com.devfactory.utqg.*"
-  #- "test_method_name_formation":
-  #  - "com.devfactory.utqg.testproject.App1Test.*"
-  #  - "com.devfactory.utqg.testproject.App2Test.*"
 
-
- # rulesConfiguration
- #     int lineMaxLength = 120; # line max length is 120 by default
- #     int maxCyclomaticComplexity = 5; # max cyclomatic complexity is 5 by default.
- #     double maxCommentDensity = 0.4; # max comment density is 40% by default.
- #     double minCommentDensity = 0.05; # min comment density is 5% by default.
- #     int maxAssertionStatements = 5; # max assertions per unit test is 5 by default.
- #     int maxFilesInAPullRequest = 5; # max files in a PR is 5 by default.
- #     int maxModificationsInPullRequest = 1000; #max modified lines in PR is 1000 by default.
- #     double minInstructionsCoverage = 100d; #max instructions code coverage is 100% by default.
- #     String testNamePartsExtractor = "_"; #test name part extractor is '_'
- #     int testedMethodNameGroup = 1; #part of test method that should be considered a tested method name.
- #     String testNameMatcher = "test_\\w+_\\w+_\\w+"; #matcher to verify if the unit test method name is correct.
- # Map<String, Integer> rulesWeight # not necessary for now.
+rulesConfiguration:
+  lineMaxLength: 120 # line max length is 120 by default
+  maxCyclomaticComplexity: 5 # max cyclomatic complexity is 5 by default.
+  maxCommentDensity: 0.4 # max comment density is 40% by default.
+  minCommentDensity: 0.05 # min comment density is 5% by default.
+  maxAssertionStatements: 5 # max assertions per unit test is 5 by default.
+  maxFilesInAPullRequest: 5 # max files in a PR is 5 by default.
+  maxModificationsInPullRequest: 1000 #max modified lines in PR is 1000 by default.
+  minInstructionsCoverage: 100d #max instructions code coverage is 100% by default.
+  testNamePartsExtractor: "_" #test name part extractor is '_'
+  testedMethodNameGroup: 1 #part of test method that should be considered a tested method name.
+  testNameMatcher: "test_\\w+_\\w+_\\w+" #matcher to verify if the unit test method name is correct.
